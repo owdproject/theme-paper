@@ -1,0 +1,36 @@
+/* Modern linear shell — hairlines only, no grids or decorative fills */
+.owd-desktop--paper {
+  --paper-bg: #f4f4f5;
+  --paper-surface: #ffffff;
+  --paper-line: #e4e4e7;
+  --paper-line-strong: #d4d4d8;
+  --paper-text: #18181b;
+  --paper-text-secondary: #71717a;
+  --paper-accent: #2563eb;
+  --paper-font: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+    sans-serif;
+  --paper-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+.owd-desktop--paper .owd-window__content--centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 0;
+  text-align: center;
+}
+
+.owd-desktop--paper .owd-window__content--centered > * {
+  width: 100%;
+}
+
+.owd-desktop--paper .owd-window__content a {
+  color: var(--paper-accent);
+  text-decoration: none;
+}
+
+.owd-desktop--paper .owd-window__content a:hover {
+  text-decoration: underline;
+}
