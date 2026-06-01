@@ -1,15 +1,10 @@
-import {
-  defineNuxtModule,
-  createResolver,
-  addComponentsDir,
-} from '@nuxt/kit'
-import { defu } from 'defu'
-import { registerTailwindPath } from '@owdproject/core/runtime/utils/utilApp'
+import { createResolver, addComponentsDir } from '@nuxt/kit'
+import { registerTailwindPath } from '@owdproject/core'
+import { defineDesktopTheme } from '@owdproject/core/runtime/utils/defineDesktopTheme'
 
-export default defineNuxtModule({
+export default defineDesktopTheme({
   meta: {
     name: 'owd-theme-paper',
-    configKey: 'desktop',
   },
   defaults: {
     name: 'paper',
@@ -18,14 +13,8 @@ export default defineNuxtModule({
     workspaces: { enabled: false },
     windows: { position: 'fixed' },
   },
-  async setup(options, nuxt) {
+  async setup(_options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
-
-    nuxt.options.runtimeConfig.public ??= {}
-    nuxt.options.runtimeConfig.public.desktop = defu(
-      nuxt.options.runtimeConfig.public.desktop ?? {},
-      options,
-    )
 
     addComponentsDir({
       path: resolve('./runtime/components'),
