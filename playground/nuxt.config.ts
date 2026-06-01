@@ -1,15 +1,13 @@
 export default defineNuxtConfig({
-  workspaceDir: '../../../',
-
-  modules: ['@owdproject/core'],
-
-  ssr: false,
-
-  devtools: { enabled: true },
-
-  compatibilityDate: '2025-05-15',
-
-  experimental: {
-    viteEnvironmentApi: true,
-  },
+    modules: ['@owdproject/core'],
+    app: {
+        baseURL: process.env.NUXT_APP_BASE_URL || '/',
+    },
+    i18n: {
+        strategy: 'no_prefix',
+    },
+    ssr: false,
+    experimental: {
+        viteEnvironmentApi: true,
+    },
 })
