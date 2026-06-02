@@ -39,9 +39,10 @@ const contentRef = computed(
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: var(--paper-surface);
-  border: 1px solid var(--paper-line-strong);
   box-sizing: border-box;
+  overflow: hidden;
+  background: var(--paper-surface);
+  border: 1px solid var(--paper-border);
 }
 
 .paper-window :deep(.owd-window__content) {

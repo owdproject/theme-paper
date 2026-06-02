@@ -1,0 +1,25 @@
+/* Theme Window chrome lives in Window*.vue (scoped). Globals only for fallbacks. */
+
+.owd-desktop--paper .paper-window.owd-window.resizable-component {
+  overflow: hidden;
+}
+
+/* Apps that use DesktopWindow without theme <Window> (e.g. kit-fs explorer) */
+.owd-desktop--paper .owd-window.resizable-component:not(.paper-window) {
+  box-sizing: border-box;
+  overflow: hidden;
+  background: var(--paper-surface);
+  border: 1px solid var(--paper-border);
+}
+
+.owd-desktop--paper .owd-window.resizable-component:not(.paper-window) .owd-window-nav {
+  min-height: 2rem;
+  padding: 0 0.625rem;
+  border-bottom: 1px solid var(--paper-border);
+  background: var(--paper-surface);
+  align-items: center;
+}
+
+.owd-desktop--paper .owd-window.resizable-component:not(.paper-window) .owd-window__content {
+  background: var(--paper-surface);
+}

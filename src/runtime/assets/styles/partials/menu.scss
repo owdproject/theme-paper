@@ -1,0 +1,88 @@
+/* Popup / overlay menus (teleport to body) */
+.p-menu,
+.p-tieredmenu,
+.p-menubar .p-menubar-submenu {
+  font-family: var(--paper-font);
+  font-size: 0.8125rem;
+  color: var(--paper-text);
+  background-color: var(--paper-menu-bg);
+  border: 1px solid var(--paper-border);
+  border-radius: var(--paper-radius-md);
+  box-shadow: none;
+}
+
+.p-menu {
+  .p-menu-list {
+    padding: 0.25rem;
+  }
+
+  .p-menu-item-content {
+    border-radius: var(--paper-radius-sm);
+    transition: background-color 0.12s ease, color 0.12s ease;
+  }
+
+  .p-menu-item:not(.p-disabled) > .p-menu-item-content:hover,
+  .p-menu-item.p-focus > .p-menu-item-content {
+    background: var(--paper-accent-soft);
+    color: var(--paper-accent);
+  }
+
+  .p-menu-separator {
+    margin: 0.25rem 0.375rem;
+    border-top: 1px solid var(--paper-border);
+  }
+}
+
+.p-tieredmenu {
+  .p-tieredmenu-root-list,
+  .p-tieredmenu-submenu {
+    padding: 0.25rem;
+  }
+
+  .p-tieredmenu-item-content {
+    border-radius: var(--paper-radius-sm);
+    transition: background-color 0.12s ease, color 0.12s ease;
+  }
+
+  .p-tieredmenu-item:not(.p-disabled) > .p-tieredmenu-item-content:hover,
+  .p-tieredmenu-item.p-focus > .p-tieredmenu-item-content,
+  .p-tieredmenu-item-active > .p-tieredmenu-item-content {
+    background: var(--paper-accent-soft);
+    color: var(--paper-accent);
+  }
+
+  .p-tieredmenu-separator {
+    margin: 0.25rem 0.375rem;
+    border-top: 1px solid var(--paper-border);
+  }
+
+  .p-tieredmenu-submenu {
+    background-color: var(--paper-menu-bg);
+    border: 1px solid var(--paper-border);
+    border-radius: var(--paper-radius-md);
+    box-shadow: none;
+  }
+}
+
+.p-menubar {
+  .p-menubar-submenu {
+    padding: 0.25rem;
+    border-radius: var(--paper-radius-md);
+
+    .p-menubar-item-content {
+      border-radius: var(--paper-radius-sm);
+      transition: background-color 0.12s ease, color 0.12s ease;
+    }
+
+    .p-menubar-item:not(.p-disabled) > .p-menubar-item-content:hover,
+    .p-menubar-item.p-focus > .p-menubar-item-content {
+      background: var(--paper-accent-soft);
+      color: var(--paper-accent);
+    }
+  }
+
+  .p-menubar-separator {
+    margin: 0.25rem 0.375rem;
+    border-top: 1px solid var(--paper-border);
+  }
+}

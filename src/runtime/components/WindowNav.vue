@@ -43,9 +43,10 @@ function onClose() {
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  min-height: 2.5rem;
-  padding: 0 0.875rem;
-  border-bottom: 1px solid var(--paper-line);
+  flex-shrink: 0;
+  min-height: 2rem;
+  padding: 0 0.625rem;
+  border-bottom: 1px solid var(--paper-border);
   background: var(--paper-surface);
 }
 
@@ -55,8 +56,9 @@ function onClose() {
   text-overflow: ellipsis;
   white-space: nowrap;
   pointer-events: none;
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   font-weight: 500;
+  line-height: 1.2;
   color: var(--paper-text);
 }
 
@@ -67,8 +69,8 @@ function onClose() {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 1.5rem;
+  height: 1.5rem;
   margin: 0;
   padding: 0;
   border: none;

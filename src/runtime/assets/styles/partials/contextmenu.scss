@@ -1,0 +1,25 @@
+.p-contextmenu {
+  font-family: var(--paper-font);
+  font-size: 0.8125rem;
+  color: var(--paper-text);
+  background-color: var(--paper-menu-bg);
+  border: 1px solid var(--paper-border);
+  border-radius: var(--paper-radius-md);
+  box-shadow: none;
+
+  .p-contextmenu-item-content {
+    border-radius: var(--paper-radius-sm);
+    transition: background-color 0.12s ease, color 0.12s ease;
+  }
+
+  .p-contextmenu-item:not(.p-disabled) > .p-contextmenu-item-content:hover,
+  .p-contextmenu-item.p-focus > .p-contextmenu-item-content {
+    background: var(--paper-accent-soft);
+    color: var(--paper-accent);
+  }
+
+  .p-contextmenu-separator {
+    margin: 0.25rem 0.375rem;
+    border-top: 1px solid var(--paper-border);
+  }
+}

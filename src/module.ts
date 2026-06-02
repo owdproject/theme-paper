@@ -1,6 +1,8 @@
-import { createResolver, addComponentsDir } from '@nuxt/kit'
+import { createResolver, addComponentsDir, addPlugin } from '@nuxt/kit'
+import { defu } from 'defu'
 import { registerTailwindPath } from '@owdproject/core'
 import { defineDesktopTheme } from '@owdproject/core/runtime/utils/defineDesktopTheme'
+import { paperAppearanceBootstrapScript } from './runtime/utils/paperAppearance'
 
 export default defineDesktopTheme({
   meta: {
@@ -25,5 +27,34 @@ export default defineDesktopTheme({
       nuxt,
       resolve('./runtime/components/**/*.{vue,mjs,ts}'),
     )
+
+    nuxt.options.css.push(resolve('./runtime/assets/styles/index.scss'))
+
+    const head = nuxt.options.app.head ?? {}
+    const existingScripts = Array.isArray(head.script)
+      ? head.script
+      : head.script
+        ? [head.script]
+        : []
+
+    nuxt.options.app.head = {
+      ...head,
+      htmlAttrs: defu({ 'data-owd-appearance': 'light' }, head.htmlAttrs ?? {}),
+      script: [
+        {
+          key: 'paper-appearance-bootstrap',
+          innerHTML: paperAppearanceBootstrapScript,
+          tagPosition: 'head',
+          type: 'text/javascript',
+        },
+        ...existingScripts,
+      ],
+    }
+
+    addPlugin({
+      src: resolve('./runtime/plugins/paper-appearance.client.ts'),
+      mode: 'client',
+      order: 1,
+    })
   },
 })
