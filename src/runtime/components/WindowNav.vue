@@ -74,7 +74,7 @@ function onClose() {
   margin: 0;
   padding: 0;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--paper-radius);
   background: transparent;
   color: var(--paper-text-secondary);
   cursor: pointer;

@@ -7,7 +7,8 @@ html[data-owd-appearance='light'] {
   --paper-surface: #f4f4f6;
   --paper-menu-bg: #f4f4f6;
   --paper-menu-header-bg: #f4f4f6;
-  --paper-border: #d0d0d5;
+  /* Same mix ratio in both schemes → equal hairline weight on light/dark */
+  --paper-border: color-mix(in srgb, var(--paper-text) 10%, var(--paper-surface));
   --paper-line: var(--paper-border);
   --paper-line-strong: var(--paper-border);
   --paper-text: #2c2c30;
@@ -17,8 +18,8 @@ html[data-owd-appearance='light'] {
   --paper-accent-soft: #e8eef8;
   --paper-scrim: rgba(44, 44, 48, 0.14);
   --paper-scrollbar-track: transparent;
-  --paper-scrollbar-thumb: #d0d0d5;
-  --paper-scrollbar-thumb-hover: #98989f;
+  --paper-scrollbar-thumb: var(--paper-border);
+  --paper-scrollbar-thumb-hover: color-mix(in srgb, var(--paper-text) 22%, var(--paper-surface));
   --paper-shadow-menu: none;
   --paper-shadow-bar: none;
   --paper-shadow-window:
@@ -34,7 +35,7 @@ html[data-owd-appearance='dark'] {
   --paper-surface: #26262a;
   --paper-menu-bg: #26262a;
   --paper-menu-header-bg: #26262a;
-  --paper-border: #3a3a40;
+  --paper-border: color-mix(in srgb, var(--paper-text) 10%, var(--paper-surface));
   --paper-line: var(--paper-border);
   --paper-line-strong: var(--paper-border);
   --paper-text: #e6e6ea;
@@ -44,8 +45,8 @@ html[data-owd-appearance='dark'] {
   --paper-accent-soft: rgba(59, 111, 212, 0.14);
   --paper-scrim: rgba(0, 0, 0, 0.35);
   --paper-scrollbar-track: transparent;
-  --paper-scrollbar-thumb: #3a3a40;
-  --paper-scrollbar-thumb-hover: #707078;
+  --paper-scrollbar-thumb: var(--paper-border);
+  --paper-scrollbar-thumb-hover: color-mix(in srgb, var(--paper-text) 22%, var(--paper-surface));
   --paper-shadow-menu: none;
   --paper-shadow-bar: none;
   --paper-shadow-window:
@@ -59,9 +60,13 @@ html[data-owd-appearance='dark'] {
     sans-serif;
   --paper-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
   --paper-bar-height: 2.75rem;
-  --paper-radius-sm: 6px;
-  --paper-radius-md: 8px;
-  --paper-radius-lg: 10px;
+  /* Single corner scale — containers, controls, and PrimeVue overlays */
+  --paper-radius: 6px;
+  --paper-radius-pill: 9999px;
+  --paper-radius-circle: 50%;
+  --paper-radius-sm: var(--paper-radius);
+  --paper-radius-md: var(--paper-radius);
+  --paper-radius-lg: var(--paper-radius);
   --paper-z-bar: 10061;
   --paper-z-menu: 10070;
 
@@ -69,28 +74,32 @@ html[data-owd-appearance='dark'] {
   --p-content-background: var(--paper-menu-bg);
   --p-content-border-color: var(--paper-border);
   --p-content-color: var(--paper-text);
-  --p-content-border-radius: var(--paper-radius-md);
+  --p-content-border-radius: var(--paper-radius);
 
   --p-contextmenu-background: var(--paper-menu-bg);
   --p-contextmenu-border-color: var(--paper-border);
+  --p-contextmenu-border-radius: var(--paper-radius);
   --p-contextmenu-color: var(--paper-text);
   --p-contextmenu-shadow: var(--paper-shadow-menu);
   --p-contextmenu-submenu-background: var(--paper-menu-bg);
 
   --p-menu-background: var(--paper-menu-bg);
   --p-menu-border-color: var(--paper-border);
+  --p-menu-border-radius: var(--paper-radius);
   --p-menu-color: var(--paper-text);
   --p-menu-shadow: var(--paper-shadow-menu);
   --p-menu-submenu-background: var(--paper-menu-bg);
 
   --p-tieredmenu-background: var(--paper-menu-bg);
   --p-tieredmenu-border-color: var(--paper-border);
+  --p-tieredmenu-border-radius: var(--paper-radius);
   --p-tieredmenu-color: var(--paper-text);
   --p-tieredmenu-shadow: var(--paper-shadow-menu);
   --p-tieredmenu-submenu-background: var(--paper-menu-bg);
 
   --p-menubar-submenu-background: var(--paper-menu-bg);
   --p-menubar-submenu-border-color: var(--paper-border);
+  --p-menubar-submenu-border-radius: var(--paper-radius);
   --p-menubar-submenu-color: var(--paper-text);
   --p-menubar-submenu-shadow: var(--paper-shadow-menu);
 }

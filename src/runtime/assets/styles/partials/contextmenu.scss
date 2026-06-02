@@ -4,11 +4,11 @@
   color: var(--paper-text);
   background-color: var(--paper-menu-bg);
   border: 1px solid var(--paper-border);
-  border-radius: var(--paper-radius-md);
+  border-radius: var(--paper-radius);
   box-shadow: none;
 
   .p-contextmenu-item-content {
-    border-radius: var(--paper-radius-sm);
+    border-radius: var(--paper-radius);
     transition: background-color 0.12s ease, color 0.12s ease;
   }
 

@@ -920,7 +920,7 @@ onUnmounted(() => {
   margin: 0;
   padding: 0;
   border: 1px solid transparent;
-  border-radius: var(--paper-radius-sm);
+  border-radius: var(--paper-radius);
   background: none;
   color: var(--paper-text-secondary);
   cursor: pointer;
@@ -965,7 +965,7 @@ onUnmounted(() => {
   margin: 0;
   padding: 0.375rem 0.75rem 0.375rem 0.625rem;
   border: 1px solid var(--paper-border);
-  border-radius: var(--paper-radius-sm);
+  border-radius: var(--paper-radius);
   background: var(--paper-surface);
   color: var(--paper-text);
   font: inherit;
@@ -1009,7 +1009,7 @@ onUnmounted(() => {
   min-width: 1.125rem;
   height: 1.125rem;
   padding: 0 0.25rem;
-  border-radius: 999px;
+  border-radius: var(--paper-radius-pill);
   background: var(--paper-bg);
   color: var(--paper-text-secondary);
   font-size: 0.6875rem;
@@ -1037,7 +1037,7 @@ onUnmounted(() => {
   margin: 0;
   padding: 0.25rem 0.375rem;
   border: none;
-  border-radius: var(--paper-radius-sm);
+  border-radius: var(--paper-radius);
   background: none;
   color: var(--paper-text-secondary);
   font: inherit;
@@ -1095,7 +1095,7 @@ onUnmounted(() => {
   max-height: min(28rem, calc(100dvh - var(--paper-bar-height) - 1.5rem));
   overflow: hidden;
   border: 1px solid var(--paper-border);
-  border-radius: var(--paper-radius-md);
+  border-radius: var(--paper-radius);
   background-color: var(--paper-menu-bg);
   box-shadow: none;
   pointer-events: auto;
@@ -1175,7 +1175,7 @@ onUnmounted(() => {
   margin: 0;
   padding: 0.5rem 0.625rem;
   border: none;
-  border-radius: var(--paper-radius-sm);
+  border-radius: var(--paper-radius);
   background: none;
   color: var(--paper-text);
   font: inherit;
@@ -1193,7 +1193,7 @@ onUnmounted(() => {
   justify-content: center;
   width: 2rem;
   height: 2rem;
-  border-radius: var(--paper-radius-sm);
+  border-radius: var(--paper-radius);
   background: var(--paper-bg);
   color: var(--paper-text-secondary);
 }
@@ -1327,7 +1327,7 @@ onUnmounted(() => {
   margin: 0;
   padding: 0;
   border: 1px solid var(--paper-border);
-  border-radius: var(--paper-radius-sm);
+  border-radius: var(--paper-radius);
   background: var(--paper-surface);
   color: var(--paper-text-secondary);
   font-size: 1.125rem;
@@ -1370,7 +1370,7 @@ onUnmounted(() => {
   margin: 0;
   padding: 0;
   border: 1px solid transparent;
-  border-radius: var(--paper-radius-sm);
+  border-radius: var(--paper-radius);
   background: none;
   color: var(--paper-text);
   font: inherit;
@@ -1426,7 +1426,7 @@ onUnmounted(() => {
   margin: 0;
   padding: 0;
   border: 1px solid var(--paper-border);
-  border-radius: var(--paper-radius-sm);
+  border-radius: var(--paper-radius);
   background: var(--paper-surface);
   color: var(--paper-text-secondary);
   cursor: pointer;
@@ -1445,7 +1445,7 @@ onUnmounted(() => {
   margin: 0;
   padding: 0;
   border: none;
-  border-radius: 999px;
+  border-radius: var(--paper-radius-pill);
   background: var(--paper-border);
   accent-color: var(--paper-accent);
   cursor: pointer;
@@ -1458,7 +1458,7 @@ onUnmounted(() => {
   width: 0.875rem;
   height: 0.875rem;
   border: 1px solid var(--paper-border);
-  border-radius: 50%;
+  border-radius: var(--paper-radius-circle);
   background: var(--paper-surface);
   box-shadow: none;
   cursor: pointer;
@@ -1468,7 +1468,7 @@ onUnmounted(() => {
   width: 0.875rem;
   height: 0.875rem;
   border: 1px solid var(--paper-border);
-  border-radius: 50%;
+  border-radius: var(--paper-radius-circle);
   background: var(--paper-surface);
   box-shadow: none;
   cursor: pointer;

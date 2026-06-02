@@ -35,6 +35,11 @@ const contentRef = computed(
 </template>
 
 <style scoped>
+.paper-window {
+  border-radius: var(--paper-radius);
+  overflow: hidden;
+}
+
 .paper-window__frame {
   display: flex;
   flex-direction: column;
@@ -43,6 +48,7 @@ const contentRef = computed(
   overflow: hidden;
   background: var(--paper-surface);
   border: 1px solid var(--paper-border);
+  border-radius: var(--paper-radius);
 }
 
 .paper-window :deep(.owd-window__content) {

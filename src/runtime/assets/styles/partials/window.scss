@@ -10,6 +10,7 @@
   overflow: hidden;
   background: var(--paper-surface);
   border: 1px solid var(--paper-border);
+  border-radius: var(--paper-radius);
 }
 
 .owd-desktop--paper .owd-window.resizable-component:not(.paper-window) .owd-window-nav {
