@@ -1,8 +1,13 @@
 {
   "name": "@owdproject/theme-paper",
   "version": "0.0.1",
-  "description": "Minimal Open Web Desktop theme — e-ink style, windows only",
+  "description": "Open Web Desktop theme",
+  "homepage": "https://github.com/owdproject/theme-paper",
   "license": "MIT",
+  "author": {
+    "name": "Open Web Desktop Team",
+    "url": "https://github.com/owdproject"
+  },
   "type": "module",
   "exports": {
     ".": {
