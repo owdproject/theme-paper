@@ -28,7 +28,8 @@
     "validate": "desktop validate ."
   },
   "dependencies": {
-    "@nuxt/kit": "^4.4.6"
+    "@nuxt/kit": "^4.4.6",
+    "@owdproject/kit-theme": "workspace:*"
   },
   "devDependencies": {
     "@nuxt/module-builder": "^1.0.2",

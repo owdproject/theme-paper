@@ -1,4 +1,4 @@
-import { createResolver, addComponentsDir, addPlugin } from '@nuxt/kit'
+import { createResolver, addComponentsDir, addPlugin, installModule } from '@nuxt/kit'
 import { defu } from 'defu'
 import { registerTailwindPath } from '@owdproject/core'
 import { defineDesktopTheme } from '@owdproject/core/runtime/utils/defineDesktopTheme'
@@ -17,6 +17,8 @@ export default defineDesktopTheme({
   },
   async setup(_options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
+
+    await installModule('@owdproject/kit-theme')
 
     addComponentsDir({
       path: resolve('./runtime/components'),
