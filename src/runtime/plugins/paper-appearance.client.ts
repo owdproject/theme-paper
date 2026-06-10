@@ -1,29 +1,23 @@
-import { watchEffect } from 'vue'
-import { useDesktopStore } from '@owdproject/core/runtime/stores/storeDesktop'
+import { watch } from 'vue'
 import {
+  DEFAULT_PAPER_APPEARANCE,
+  PAPER_APPEARANCE_STORAGE_KEY,
+  paperAppearanceId,
   readPersistedAppearance,
   syncHtmlAppearance,
 } from '../utils/paperAppearance'
 
 /**
- * Paper defaults to light appearance. Syncs store → <html data-owd-appearance>.
- * Respects persisted user choice from Pinia; head inline script prevents first-paint flash.
+ * Paper light/dark: localStorage → shared ref → html[data-owd-appearance].
+ * Head bootstrap script prevents first-paint flash on reload.
  */
-export default defineNuxtPlugin(async () => {
-  const desktopStore = useDesktopStore()
+export default defineNuxtPlugin(() => {
+  paperAppearanceId.value =
+    readPersistedAppearance() ?? DEFAULT_PAPER_APPEARANCE
+  syncHtmlAppearance(paperAppearanceId.value)
 
-  if (desktopStore.$persistedState?.isReady) {
-    await desktopStore.$persistedState.isReady()
-  }
-
-  const persisted = readPersistedAppearance()
-  if (!persisted) {
-    desktopStore.setAppearance('light')
-  }
-
-  syncHtmlAppearance(desktopStore.state.personalization.appearance)
-
-  watchEffect(() => {
-    syncHtmlAppearance(desktopStore.state.personalization.appearance)
+  watch(paperAppearanceId, (appearance) => {
+    localStorage.setItem(PAPER_APPEARANCE_STORAGE_KEY, appearance)
+    syncHtmlAppearance(appearance)
   })
 })

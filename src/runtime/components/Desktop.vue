@@ -2,16 +2,10 @@
 import { ref } from 'vue'
 import PaperSystemBar from './PaperSystemBar.vue'
 import PaperWindowSnapHints from './PaperWindowSnapHints.vue'
-import { useDesktopWorkArea } from '@owdproject/kit-theme/runtime/composables/useDesktopWorkArea'
-import {
-  provideDesktopShellStage,
-  provideDesktopWorkArea,
-} from '@owdproject/kit-theme/runtime/composables/provideDesktopShellStage'
+import { useDesktopWorkArea } from '@owdproject/core/runtime/composables/useDesktopWorkArea'
 
 const shellStageRef = ref<HTMLElement | null>(null)
-const { workArea } = useDesktopWorkArea(shellStageRef)
-provideDesktopShellStage(shellStageRef)
-provideDesktopWorkArea(workArea)
+useDesktopWorkArea(shellStageRef)
 </script>
 
 <template>

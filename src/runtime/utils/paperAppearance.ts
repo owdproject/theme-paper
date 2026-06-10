@@ -1,32 +1,29 @@
-export const PAPER_DESKTOP_STORE_KEY = 'owd/desktop'
+import { ref } from 'vue'
 
 export type PaperAppearance = 'light' | 'dark'
 
-/** Read appearance from Pinia persisted desktop store payload, if present. */
+export const PAPER_APPEARANCE_STORAGE_KEY = 'owd-paper-appearance'
+
+export const DEFAULT_PAPER_APPEARANCE: PaperAppearance = 'light'
+
+/** Shared appearance state — hydrated and synced by `paper-appearance.client` plugin. */
+export const paperAppearanceId = ref<PaperAppearance>(DEFAULT_PAPER_APPEARANCE)
+
+export function isPaperAppearance(value: string): value is PaperAppearance {
+  return value === 'light' || value === 'dark'
+}
+
 export function readPersistedAppearance(): PaperAppearance | undefined {
   if (typeof localStorage === 'undefined') return undefined
 
-  try {
-    const raw = localStorage.getItem(PAPER_DESKTOP_STORE_KEY)
-    if (!raw) return undefined
-
-    const data = JSON.parse(raw) as Record<string, unknown>
-    const personalization =
-      (data.personalization as { appearance?: string } | undefined) ??
-      (data.state as { personalization?: { appearance?: string } } | undefined)
-        ?.personalization
-
-    const appearance = personalization?.appearance
-    if (appearance === 'light' || appearance === 'dark') return appearance
-  } catch {
-    /* ignore corrupt storage */
-  }
+  const stored = localStorage.getItem(PAPER_APPEARANCE_STORAGE_KEY)
+  if (stored && isPaperAppearance(stored)) return stored
 
   return undefined
 }
 
-/** Inline bootstrap: set data-owd-appearance before CSS paints (no prefers-color-scheme flash). */
-export const paperAppearanceBootstrapScript = `(function(){var el=document.documentElement;try{var raw=localStorage.getItem(${JSON.stringify(PAPER_DESKTOP_STORE_KEY)});if(raw){var j=JSON.parse(raw),p=j.personalization||(j.state&&j.state.personalization),a=p&&p.appearance;if(a==="light"||a==="dark"){el.dataset.owdAppearance=a;return}}}catch(e){}el.dataset.owdAppearance="light"})();`
+/** Inline bootstrap: set data-owd-appearance before CSS paints (no flash). */
+export const paperAppearanceBootstrapScript = `(function(){var el=document.documentElement,d=${JSON.stringify(DEFAULT_PAPER_APPEARANCE)};try{var s=localStorage.getItem(${JSON.stringify(PAPER_APPEARANCE_STORAGE_KEY)});if(s==="light"||s==="dark"){el.dataset.owdAppearance=s;return}}catch(e){}el.dataset.owdAppearance=d})();`
 
 export function syncHtmlAppearance(appearance: PaperAppearance) {
   if (typeof document === 'undefined') return

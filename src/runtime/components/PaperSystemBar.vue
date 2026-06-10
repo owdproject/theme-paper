@@ -2,8 +2,8 @@
 import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { useApplicationManager } from '@owdproject/core/runtime/composables/useApplicationManager'
 import { useApplicationEntries } from '@owdproject/core/runtime/composables/useApplicationEntries'
-import { useDesktopStore } from '@owdproject/core/runtime/stores/storeDesktop'
 import { useDesktopVolumeStore } from '@owdproject/core/runtime/stores/storeDesktopVolume'
+import { usePaperAppearance } from '../composables/usePaperAppearance'
 
 const open = ref(false)
 const calendarOpen = ref(false)
@@ -31,16 +31,14 @@ const viewDate = ref(new Date(today.getFullYear(), today.getMonth(), 1))
 
 const applicationManager = useApplicationManager()
 const apps = useApplicationEntries().sortedAppEntries('title', 'primary')
-const desktopStore = useDesktopStore()
+const { appearance, toggleAppearance } = usePaperAppearance()
 const volumeStore = useDesktopVolumeStore()
 
 const appCount = computed(() => apps.value.length)
 
 const runningApps = computed(() => applicationManager.appsRunning.value)
 
-const isDark = computed(
-  () => desktopStore.state.personalization.appearance === 'dark',
-)
+const isDark = computed(() => appearance.value === 'dark')
 
 const appearanceLabel = computed(() =>
   isDark.value ? 'Switch to light mode' : 'Switch to dark mode',
@@ -224,10 +222,6 @@ function updateVolumePosition() {
     left: `${left}px`,
     minWidth: `${width}px`,
   }
-}
-
-function toggleAppearance() {
-  desktopStore.setAppearance(isDark.value ? 'light' : 'dark')
 }
 
 function toggleApps() {

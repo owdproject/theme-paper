@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue'
-import { useDesktopWindowDragHandlersInjected } from '@owdproject/kit-theme/runtime/composables/useDesktopWindowDragHandlers'
+import { useWindowDragHandlers } from '@owdproject/core/runtime/composables/useWindowDragHandlers'
 
 const props = defineProps<{
   window?: IWindowController
@@ -18,7 +18,7 @@ const contentRef = computed(
   () => (props.content ?? attrs.content) as WindowContent | undefined,
 )
 
-const { onDragStart, onDragEnd } = useDesktopWindowDragHandlersInjected(
+const { onDragStart, onDragEnd } = useWindowDragHandlers(
   () => windowRef.value,
 )
 </script>

@@ -1,12 +1,18 @@
-import { createResolver, addComponentsDir, addPlugin, installModule } from '@nuxt/kit'
+import {
+  createResolver,
+  addComponentsDir,
+  addImportsDir,
+  addPlugin,
+  installModule,
+} from '@nuxt/kit'
 import { defu } from 'defu'
-import { registerTailwindPath } from '@owdproject/core'
-import { defineDesktopTheme } from '@owdproject/core/runtime/utils/defineDesktopTheme'
+import { defineDesktopTheme } from '@owdproject/core'
+import { registerThemeTailwindPath } from '@owdproject/kit-primevue/kit/registerTailwindPath'
 import { paperAppearanceBootstrapScript } from './runtime/utils/paperAppearance'
 
 export default defineDesktopTheme({
   meta: {
-    name: 'owd-theme-paper',
+    name: 'desktop-theme-paper',
   },
   defaults: {
     name: 'paper',
@@ -18,17 +24,15 @@ export default defineDesktopTheme({
   async setup(_options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
 
-    await installModule('@owdproject/kit-theme')
+    await installModule('@owdproject/kit-primevue', { explorer: false })
+    registerThemeTailwindPath(nuxt, import.meta.url)
 
     addComponentsDir({
       path: resolve('./runtime/components'),
       global: true,
     })
 
-    registerTailwindPath(
-      nuxt,
-      resolve('./runtime/components/**/*.{vue,mjs,ts}'),
-    )
+    addImportsDir(resolve('./runtime/composables'))
 
     nuxt.options.css.push(resolve('./runtime/assets/styles/index.scss'))
 
