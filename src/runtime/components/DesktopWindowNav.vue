@@ -10,7 +10,7 @@ function onClose() {
 </script>
 
 <template>
-  <DesktopWindowNav class="paper-window-nav">
+  <DesktopCoreWindowNav class="paper-window-nav">
     <span v-if="windowController?.title" class="paper-window-nav__title">
       {{ windowController.title }}
     </span>
@@ -34,7 +34,7 @@ function onClose() {
         </svg>
       </button>
     </div>
-  </DesktopWindowNav>
+  </DesktopCoreWindowNav>
 </template>
 
 <style scoped>

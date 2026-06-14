@@ -1,7 +1,7 @@
 <template>
-  <DesktopWindowContent class="paper-window__body">
+  <DesktopCoreWindowContent class="paper-window__body">
     <slot />
-  </DesktopWindowContent>
+  </DesktopCoreWindowContent>
 </template>
 
 <style scoped>

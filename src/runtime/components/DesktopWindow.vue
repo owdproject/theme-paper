@@ -24,7 +24,7 @@ const { onDragStart, onDragEnd } = useWindowDragHandlers(
 </script>
 
 <template>
-  <DesktopWindow
+  <DesktopCoreWindow
     :window="windowRef"
     :content="contentRef"
     v-show="windowRef?.state?.active !== false"
@@ -33,12 +33,12 @@ const { onDragStart, onDragEnd } = useWindowDragHandlers(
     @drag:end="onDragEnd"
   >
     <div class="paper-window__frame">
-      <WindowNav />
-      <WindowContent>
+      <DesktopWindowNav />
+      <DesktopWindowContent>
         <slot />
-      </WindowContent>
+      </DesktopWindowContent>
     </div>
-  </DesktopWindow>
+  </DesktopCoreWindow>
 </template>
 
 <style scoped>
