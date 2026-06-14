@@ -16,7 +16,7 @@ useDesktopWorkArea(shellStageRef)
       <DesktopContent>
         <slot />
       </DesktopContent>
-      <DesktopApplicationRender />
+      <DesktopCoreApplicationRender />
     </div>
   </DesktopCore>
 </template>
