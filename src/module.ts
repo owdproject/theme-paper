@@ -7,7 +7,7 @@ import {
 } from '@nuxt/kit'
 import { defu } from 'defu'
 import { defineDesktopTheme } from '@owdproject/core'
-import { registerThemeTailwindPath } from '@owdproject/kit-primevue/kit/registerTailwindPath'
+import { registerThemeTailwindPath } from '@owdproject/kit-tailwind/kit/registerTailwindPath'
 import { paperAppearanceBootstrapScript } from './runtime/utils/paperAppearance'
 
 export default defineDesktopTheme({

@@ -1,0 +1,68 @@
+@use './variables';
+
+/* PrimeVue Tabs inside paper theme */
+.owd-desktop--paper {
+  .p-tabs {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .p-tablist {
+      background: transparent;
+      border-bottom: 1px solid var(--paper-border);
+    }
+
+    .p-tablist-tab-list {
+      display: flex;
+      flex-direction: row;
+      gap: 4px;
+      border: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      .p-tab {
+        font-family: var(--paper-font);
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--paper-text-secondary);
+        background: transparent;
+        border: 1px solid transparent;
+        border-bottom: 0;
+        border-top-left-radius: var(--paper-radius);
+        border-top-right-radius: var(--paper-radius);
+        padding: 4px 10px;
+        cursor: pointer;
+        transition: all 0.15s ease-in-out;
+        margin-bottom: -1px;
+
+        &:hover {
+          color: var(--paper-text);
+          background: color-mix(in srgb, var(--paper-surface) 95%, var(--paper-text));
+          border-color: transparent;
+          border-bottom: 0;
+        }
+
+        &.p-tab-active {
+          color: var(--paper-accent);
+          background: var(--paper-surface);
+          border-color: var(--paper-border);
+          border-bottom: 1px solid var(--paper-surface);
+
+          &:hover {
+            border-color: var(--paper-border);
+            border-bottom: 1px solid var(--paper-surface);
+            background: var(--paper-surface);
+          }
+        }
+      }
+    }
+
+    .p-tabpanels {
+      background: transparent;
+      padding: 12px 0 0 0;
+      border: 0;
+      color: var(--paper-text);
+    }
+  }
+}

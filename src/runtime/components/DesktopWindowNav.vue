@@ -11,28 +11,43 @@ function onClose() {
 
 <template>
   <DesktopCoreWindowNav class="paper-window-nav">
-    <span v-if="windowController?.title" class="paper-window-nav__title">
-      {{ windowController.title }}
-    </span>
+    <div
+      v-if="$slots.prepend"
+      class="owd-window-nav__btn-group owd-window-nav__btn-group--prepend"
+    >
+      <slot name="prepend" />
+    </div>
+
+    <div v-if="windowController?.windowTitle" class="paper-window-nav__title-container">
+      <Icon
+        v-if="windowController?.icon"
+        :name="windowController.icon"
+        class="paper-window-nav__icon"
+      />
+      <span class="paper-window-nav__title">
+        {{ windowController.windowTitle }}
+      </span>
+    </div>
+
     <div class="owd-window-nav__btn-group owd-window-nav__btn-group--append">
-      <button
+      <slot name="append" />
+
+      <DesktopWindowNavButton
         v-if="!windowController?.instanced || windowController?.isDestroyable"
-        type="button"
         class="paper-window-nav__close"
         aria-label="Close"
-        @mousedown.stop
-        @click.stop="onClose"
+        @click="onClose"
       >
-        <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+        <svg width="9.5" height="9.5" viewBox="0 0 12 12" aria-hidden="true">
           <path
             d="M1 1l10 10M11 1L1 11"
             fill="none"
             stroke="currentColor"
-            stroke-width="1.5"
+            stroke-width="1.6"
             stroke-linecap="round"
           />
         </svg>
-      </button>
+      </DesktopWindowNavButton>
     </div>
   </DesktopCoreWindowNav>
 </template>
@@ -42,16 +57,30 @@ function onClose() {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
+  gap: 0.5rem;
   flex-shrink: 0;
   min-height: 2rem;
-  padding: 0 0.625rem;
-  border-bottom: 1px solid var(--paper-border);
+  padding: 0 0.5rem;
+  border-bottom: 1px solid var(--paper-border-window);
   background: var(--paper-surface);
 }
 
-.paper-window-nav__title {
+.paper-window-nav__title-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   flex: 1;
+  min-width: 0;
+}
+
+.paper-window-nav__icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: var(--paper-text-secondary);
+}
+
+.paper-window-nav__title {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -65,23 +94,11 @@ function onClose() {
 .paper-window-nav__close {
   position: relative;
   z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 1.5rem;
-  height: 1.5rem;
-  margin: 0;
-  padding: 0;
-  border: none;
-  border-radius: var(--paper-radius);
-  background: transparent;
-  color: var(--paper-text-secondary);
-  cursor: pointer;
 }
 
-.paper-window-nav__close:hover {
-  background: var(--paper-bg);
-  color: var(--paper-text);
+.owd-window-nav__btn-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 </style>

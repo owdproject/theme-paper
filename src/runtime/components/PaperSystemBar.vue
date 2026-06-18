@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useApplicationManager } from '@owdproject/core/runtime/composables/useApplicationManager'
 import { useApplicationEntries } from '@owdproject/core/runtime/composables/useApplicationEntries'
 import { useDesktopVolumeStore } from '@owdproject/core/runtime/stores/storeDesktopVolume'
@@ -55,6 +56,8 @@ const volumeLabel = computed(() => {
   return `Volume, ${volumeLevel.value}%`
 })
 
+const { te, t } = useI18n()
+
 const groupedApps = computed(() => {
   const map = new Map<string, ApplicationEntryWithInherited[]>()
   for (const entry of apps.value) {
@@ -64,8 +67,13 @@ const groupedApps = computed(() => {
     map.set(category, list)
   }
   return [...map.entries()]
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([category, entries]) => ({
+    .map(([category, entries]) => {
+      const translationKey = `applications.categories.${category}`
+      const translatedName = te(translationKey) ? t(translationKey) : category
+      return { category, translatedName, entries }
+    })
+    .sort((a, b) => a.translatedName.localeCompare(b.translatedName))
+    .map(({ category, entries }) => ({
       category,
       entries: [...entries].sort((a, b) =>
         (a.title || '').localeCompare(b.title || ''),
@@ -631,7 +639,7 @@ onUnmounted(() => {
                 v-if="showGroupHeaders"
                 class="paper-menu__section-title"
               >
-                {{ group.category }}
+                {{ $te(`applications.categories.${group.category}`) ? $t(`applications.categories.${group.category}`) : group.category }}
               </h2>
               <ul class="paper-menu__list" role="none">
                 <li
@@ -928,7 +936,6 @@ onUnmounted(() => {
 
 .paper-bar__app-btn:hover {
   opacity: 1;
-  color: var(--paper-text);
   background: color-mix(in srgb, var(--paper-bg) 80%, transparent);
 }
 

@@ -1,0 +1,55 @@
+@use './variables';
+
+/* Input elements inside the paper theme */
+.owd-desktop--paper {
+  /* Style for InputText */
+  .p-inputtext {
+    font-family: var(--paper-font);
+    font-size: 14px;
+    background: var(--paper-surface);
+    border: 1px solid var(--paper-border);
+    border-radius: var(--paper-radius);
+    color: var(--paper-text);
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    box-shadow: none;
+
+    &::placeholder {
+      color: var(--paper-text-tertiary);
+    }
+
+    &:hover {
+      border-color: color-mix(in srgb, var(--paper-border) 70%, var(--paper-text));
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--paper-accent);
+      box-shadow: 0 0 0 2px var(--paper-accent-soft);
+    }
+  }
+
+  /* Style for generic buttons */
+  .p-button {
+    font-family: var(--paper-font);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--paper-text);
+    background: var(--paper-surface) !important;
+    border: 1px solid var(--paper-border) !important;
+    border-radius: var(--paper-radius);
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: background 0.15s ease-in-out, border-color 0.15s ease-in-out;
+
+    &:hover {
+      background: color-mix(in srgb, var(--paper-surface) 92%, var(--paper-text)) !important;
+      border-color: color-mix(in srgb, var(--paper-border) 60%, var(--paper-text)) !important;
+    }
+
+    &:active {
+      background: color-mix(in srgb, var(--paper-surface) 84%, var(--paper-text)) !important;
+      border-color: color-mix(in srgb, var(--paper-border) 40%, var(--paper-text)) !important;
+    }
+  }
+}

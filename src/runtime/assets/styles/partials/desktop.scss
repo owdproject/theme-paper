@@ -21,6 +21,11 @@ body {
   height: 100dvh;
   overflow: hidden;
   background: var(--paper-bg);
+  background-image: 
+    linear-gradient(var(--paper-grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--paper-grid-color) 1px, transparent 1px);
+  background-size: 80px 80px;
+  background-position: center;
   color: var(--paper-text);
   font-family: var(--paper-font);
   font-size: 14px;

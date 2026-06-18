@@ -33,7 +33,14 @@ const { onDragStart, onDragEnd } = useWindowDragHandlers(
     @drag:end="onDragEnd"
   >
     <div class="paper-window__frame">
-      <DesktopWindowNav />
+      <DesktopWindowNav>
+        <template v-slot:prepend>
+          <slot name="nav-prepend" />
+        </template>
+        <template v-slot:append>
+          <slot name="nav-append" />
+        </template>
+      </DesktopWindowNav>
       <DesktopWindowContent>
         <slot />
       </DesktopWindowContent>
@@ -54,7 +61,7 @@ const { onDragStart, onDragEnd } = useWindowDragHandlers(
   box-sizing: border-box;
   overflow: hidden;
   background: var(--paper-surface);
-  border: 1px solid var(--paper-border);
+  border: 1px solid var(--paper-border-window);
   border-radius: var(--paper-radius);
 }
 

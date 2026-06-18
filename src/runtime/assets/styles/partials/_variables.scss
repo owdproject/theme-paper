@@ -9,6 +9,8 @@ html[data-owd-appearance='light'] {
   --paper-menu-header-bg: #f4f4f6;
   /* Same mix ratio in both schemes → equal hairline weight on light/dark */
   --paper-border: color-mix(in srgb, var(--paper-text) 10%, var(--paper-surface));
+  --paper-border-window: color-mix(in srgb, var(--paper-text) 18%, var(--paper-surface));
+  --paper-grid-color: color-mix(in srgb, var(--paper-text) 6%, transparent);
   --paper-line: var(--paper-border);
   --paper-line-strong: var(--paper-border);
   --paper-text: #2c2c30;
@@ -36,6 +38,8 @@ html[data-owd-appearance='dark'] {
   --paper-menu-bg: #26262a;
   --paper-menu-header-bg: #26262a;
   --paper-border: color-mix(in srgb, var(--paper-text) 10%, var(--paper-surface));
+  --paper-border-window: color-mix(in srgb, var(--paper-text) 12%, var(--paper-surface));
+  --paper-grid-color: color-mix(in srgb, var(--paper-text) 3.5%, transparent);
   --paper-line: var(--paper-border);
   --paper-line-strong: var(--paper-border);
   --paper-text: #e6e6ea;

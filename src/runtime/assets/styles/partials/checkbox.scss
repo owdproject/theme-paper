@@ -1,0 +1,64 @@
+@use './variables';
+
+/* PrimeVue Checkbox inside paper theme */
+.owd-desktop--paper {
+  --p-checkbox-width: 16px;
+  --p-checkbox-height: 16px;
+  --p-checkbox-border-radius: 4px;
+  --p-checkbox-background: var(--paper-surface);
+  --p-checkbox-hover-background: color-mix(in srgb, var(--paper-surface) 95%, var(--paper-text));
+  --p-checkbox-checked-background: var(--paper-accent);
+  --p-checkbox-border-color: var(--paper-border);
+  --p-checkbox-hover-border-color: color-mix(in srgb, var(--paper-border) 70%, var(--paper-text));
+  --p-checkbox-checked-border-color: var(--paper-accent);
+  --p-checkbox-shadow: none;
+
+  .p-checkbox {
+    display: inline-flex;
+    position: relative;
+    user-select: none;
+    vertical-align: middle;
+    width: var(--p-checkbox-width);
+    height: var(--p-checkbox-height);
+    margin-top: -2px;
+
+    .p-checkbox-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--p-checkbox-border-color);
+      background: var(--p-checkbox-background);
+      width: var(--p-checkbox-width) !important;
+      height: var(--p-checkbox-height) !important;
+      min-width: var(--p-checkbox-width) !important;
+      min-height: var(--p-checkbox-height) !important;
+      border-radius: var(--p-checkbox-border-radius);
+      transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
+
+      .p-checkbox-icon {
+        font-size: 10px;
+        transition: transform 0.1s;
+      }
+    }
+
+    &.p-checkbox-checked {
+      .p-checkbox-box {
+        background: var(--p-checkbox-checked-background);
+        border-color: var(--p-checkbox-checked-border-color);
+        color: white;
+      }
+    }
+
+    &:not(.p-checkbox-disabled):hover {
+      .p-checkbox-box {
+        border-color: var(--p-checkbox-hover-border-color);
+        background: var(--p-checkbox-hover-background);
+      }
+
+      &.p-checkbox-checked .p-checkbox-box {
+        background: var(--p-checkbox-checked-background);
+        border-color: var(--p-checkbox-checked-border-color);
+      }
+    }
+  }
+}

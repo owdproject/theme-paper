@@ -41,6 +41,7 @@
   },
   "peerDependencies": {
     "@owdproject/core": "^3.4.0",
-    "@owdproject/kit-primevue": "^0.0.1"
+    "@owdproject/kit-primevue": "^0.1.0",
+    "@owdproject/kit-tailwind": "^0.1.0"
   }
 }
