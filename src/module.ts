@@ -25,6 +25,7 @@ export default defineDesktopTheme({
     const { resolve } = createResolver(import.meta.url)
 
     await installModule('@owdproject/kit-primevue', { explorer: false })
+
     registerThemeTailwindPath(nuxt, import.meta.url)
 
     addComponentsDir({
