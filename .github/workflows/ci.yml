@@ -35,17 +35,29 @@ jobs:
           repository: owdproject/kit-primevue
           path: client/packages/kit-primevue
 
+      - name: Checkout module-fs
+        uses: actions/checkout@v4
+        with:
+          repository: owdproject/module-fs
+          path: client/packages/module-fs
+
+      - name: Checkout module-persistence
+        uses: actions/checkout@v4
+        with:
+          repository: owdproject/module-persistence
+          path: client/packages/module-persistence
+
       - name: Checkout app-todo
         uses: actions/checkout@v4
         with:
           repository: owdproject/app-todo
           path: client/apps/app-todo
 
-      - name: Checkout app-classic-audioplayer
+      - name: Checkout app-dino
         uses: actions/checkout@v4
         with:
-          repository: owdproject/app-classic-audioplayer
-          path: client/apps/app-classic-audioplayer
+          repository: owdproject/app-dino
+          path: client/apps/app-dino
 
       - name: Checkout app-gridsky
         uses: actions/checkout@v4
@@ -64,12 +76,6 @@ jobs:
         with:
           repository: owdproject/app-soundcloud
           path: client/apps/app-soundcloud
-
-      - name: Checkout app-wasmboy
-        uses: actions/checkout@v4
-        with:
-          repository: owdproject/app-wasmboy
-          path: client/apps/app-wasmboy
 
       - name: Checkout app-terminal
         uses: actions/checkout@v4
@@ -93,12 +99,6 @@ jobs:
           node-version: 22
 
       - run: npm i -g --force corepack@latest && corepack enable
-
-      - name: Apply wasmboy allowBuilds for playground
-        working-directory: client
-        run: |
-          node themes/theme-paper/ci/patch-client-workspace.mjs
-          grep -Fq 'audiobuffer-to-wav@https://codeload.github.com/torch2424/audiobuffer-to-wav' pnpm-workspace.yaml
 
       - name: Install monorepo dependencies
         working-directory: client
