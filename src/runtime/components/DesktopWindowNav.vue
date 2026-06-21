@@ -30,13 +30,19 @@ function onClose() {
     </div>
 
     <div class="owd-window-nav__btn-group owd-window-nav__btn-group--append">
-      <slot name="append" />
+      <div
+        v-if="$slots.append"
+        class="owd-window-nav__btn-group owd-window-nav__btn-group--append-inner"
+      >
+        <slot name="append" />
+      </div>
 
       <DesktopWindowNavButton
         v-if="!windowController?.instanced || windowController?.isDestroyable"
-        class="paper-window-nav__close"
-        aria-label="Close"
-        @click="onClose"
+        class="owd-window-nav__button--close"
+        title="Close"
+        @mousedown.stop
+        @click.stop="onClose"
       >
         <svg width="9.5" height="9.5" viewBox="0 0 12 12" aria-hidden="true">
           <path
@@ -52,17 +58,14 @@ function onClose() {
   </DesktopCoreWindowNav>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .paper-window-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
   flex-shrink: 0;
-  min-height: 2rem;
-  padding: 0 0.5rem;
-  border-bottom: 1px solid var(--paper-border-window);
-  background: var(--paper-surface);
+  min-height: var(--paper-nav-height);
 }
 
 .paper-window-nav__title-container {
@@ -91,14 +94,22 @@ function onClose() {
   color: var(--paper-text);
 }
 
-.paper-window-nav__close {
-  position: relative;
-  z-index: 2;
-}
-
 .owd-window-nav__btn-group {
   display: flex;
-  align-items: center;
-  gap: 6px;
+  align-items: stretch;
+  gap: 4px;
+}
+
+.owd-window-nav__btn-group--append {
+  margin-left: auto;
+}
+
+.owd-window-nav__btn-group--append-inner {
+  display: flex;
+  align-items: stretch;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 </style>

@@ -1,0 +1,57 @@
+/*
+ * Window titlebar chrome for Paper theme windows.
+ * Layout/sizing lives in Vue components; colors and hover states here.
+ */
+.owd-desktop--paper .paper-window.owd-window.resizable-component {
+  .paper-window-nav {
+    min-height: var(--paper-nav-height);
+    padding: 0 0.5rem;
+    border-bottom: 1px solid var(--paper-border-window);
+    background: var(--paper-surface);
+    color: var(--paper-text);
+
+    .owd-window-nav__btn-group--append {
+      align-self: stretch;
+    }
+
+    .owd-window-nav__btn-group--append-inner {
+      display: flex;
+      align-items: stretch;
+    }
+
+    .owd-window-nav__button {
+      color: var(--paper-text-secondary);
+      transition: background-color 0.12s ease, color 0.12s ease;
+
+      &:hover {
+        background: var(--paper-bg);
+        color: var(--paper-text);
+      }
+
+      &:active {
+        background: color-mix(in srgb, var(--paper-text) 8%, var(--paper-bg));
+      }
+
+      &--close:hover {
+        background: color-mix(in srgb, #c0392b 88%, var(--paper-surface));
+        color: #fff;
+      }
+
+      &--close:active {
+        background: color-mix(in srgb, #e74c3c 92%, var(--paper-surface));
+        color: #fff;
+      }
+    }
+  }
+}
+
+.owd-desktop--paper .owd-window.resizable-component:not(.paper-window) .owd-window-nav {
+  .owd-window-nav__button {
+    color: var(--paper-text-secondary);
+
+    &:hover {
+      background: var(--paper-bg);
+      color: var(--paper-text);
+    }
+  }
+}

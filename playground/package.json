@@ -8,6 +8,13 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@owdproject/app-classic-audioplayer": "workspace:*",
+    "@owdproject/app-gridsky": "workspace:*",
+    "@owdproject/app-soundcloud": "workspace:*",
+    "@owdproject/app-terminal": "workspace:*",
+    "@owdproject/app-todo": "workspace:*",
+    "@owdproject/app-wasmboy": "workspace:*",
+    "@owdproject/app-youtube": "workspace:*",
     "@owdproject/core": "workspace:*",
     "@owdproject/theme-paper": "workspace:*",
     "nuxt": "^4.4.6"

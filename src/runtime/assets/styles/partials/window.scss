@@ -14,7 +14,7 @@
 }
 
 .owd-desktop--paper .owd-window.resizable-component:not(.paper-window) .owd-window-nav {
-  min-height: 2rem;
+  min-height: var(--paper-nav-height);
   padding: 0 0.625rem;
   border-bottom: 1px solid var(--paper-border-window);
   background: var(--paper-surface);

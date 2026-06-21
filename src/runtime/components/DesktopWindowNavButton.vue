@@ -1,6 +1,7 @@
 <script setup lang="ts">
 defineProps<{
   title?: string
+  disabled?: boolean
 }>()
 </script>
 
@@ -10,40 +11,45 @@ defineProps<{
     class="owd-window-nav__button"
     :title="title"
     :aria-label="title"
+    :disabled="disabled"
     @mousedown.stop
   >
     <slot />
   </button>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+/* Sizing only — colors/hover in window-chrome.scss */
 .owd-window-nav__button {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 1.5rem;
-  height: 1.5rem;
+  box-sizing: border-box;
+  width: var(--paper-nav-button-size);
+  min-width: var(--paper-nav-button-size);
+  height: var(--paper-nav-button-size);
+  min-height: var(--paper-nav-button-size);
   margin: 0;
   padding: 0;
   border: none;
   border-radius: var(--paper-radius);
   background: transparent;
-  color: var(--paper-text-secondary);
+  color: inherit;
   cursor: pointer;
-  transition: background-color 0.12s ease, color 0.12s ease;
-}
 
-.owd-window-nav__button:hover {
-  background: var(--paper-bg);
-  color: var(--paper-text);
-}
+  &:disabled {
+    opacity: 0.45;
+    cursor: default;
+    pointer-events: none;
+  }
 
-.owd-window-nav__button :deep(.iconify),
-.owd-window-nav__button :deep(svg) {
-  width: 12px;
-  height: 12px;
-  pointer-events: none;
+  :deep(.iconify),
+  :deep(svg) {
+    width: 12px;
+    height: 12px;
+    pointer-events: none;
+  }
 }
 </style>
