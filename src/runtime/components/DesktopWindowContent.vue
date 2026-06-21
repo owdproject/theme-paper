@@ -28,9 +28,4 @@
   min-height: 0;
   height: 100%;
 }
-
-.paper-window__body.owd-window__content--padded .paper-window-body {
-  padding: 16px;
-  box-sizing: border-box;
-}
 </style>
