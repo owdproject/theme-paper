@@ -11,6 +11,10 @@ defineOptions({ inheritAttrs: false })
 
 const attrs = useAttrs()
 
+const windowRootClass = computed(() => {
+  return ['paper-window', attrs.class].filter(Boolean)
+})
+
 const windowRef = computed(
   () => (props.window ?? attrs.window) as IWindowController | undefined,
 )
@@ -28,7 +32,7 @@ const { onDragStart, onDragEnd } = useWindowDragHandlers(
     :window="windowRef"
     :content="contentRef"
     v-show="windowRef?.state?.active !== false"
-    class="paper-window"
+    :class="windowRootClass"
     @drag:start="onDragStart"
     @drag:end="onDragEnd"
   >
