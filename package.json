@@ -18,8 +18,10 @@
     }
   },
   "main": "./dist/module.mjs",
-  "files": ["dist", "src"],
-  "nx": { "name": "theme-paper" },
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "prepack": "nuxt-module-build build",
     "dev": "pnpm run dev:prepare && cd playground && pnpm exec nuxt dev",
